@@ -18,26 +18,15 @@ import apiFake from '../services/apiFake';
 import { InputForm } from '../components/Forms/InputForm';
 import { Button } from '../components/Button';
 import { HttpRequestError } from '../utils/customErrors';
+import { useAuth } from '../hooks/auth';
 
 const schema = Yup.object().shape({
-	username: Yup.string()
-		.required('Nome de usuário é obrigatório')
-		.matches(
-			/^(?=.{3,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/,
-			'Deve ter no minímo 3 caracteres, não deve conter espaço nem caracter especial'
-		),
-	password: Yup.string()
-		.required('Senha é obrigatória')
-		.matches(
-			/^(?=.*[a-z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
-			'Deve ter no minímo 8 caracteres, conter ao menos um caractere especial, uma letra e um número'
-		),
-	passwordConfirmation: Yup.string()
-		.required('Confirmação de senha é obrigatória')
-		.oneOf([Yup.ref('password')], 'A senha de confirmação não confere'),
+	username: Yup.string().required('Informe seu nome de usuário'),
+	password: Yup.string().required('Informe sua senha'),
 });
 
-export function SignUp() {
+export function SignIn() {
+	const { signIn } = useAuth();
 	const [isLoading, setIsLoading] = useState(false);
 	const [requestError, setRequestError] = useState('');
 	const {
@@ -49,18 +38,14 @@ export function SignUp() {
 		resolver: yupResolver(schema),
 	});
 
-	async function handleRegister(form: Partial<UserDTO>) {
+	async function handleSignIn(form: Partial<UserDTO>) {
 		setIsLoading(true);
-		const newUser = {
-			id: String(uuidv4()),
+		const credentials = {
 			username: form.username!,
 			password: form.password!,
-			createdAt: new Date(),
 		};
-		apiFake
-			.signUp(newUser)
+		signIn(credentials)
 			.then((res) => {
-				console.log(res);
 				reset({
 					username: '',
 					password: '',
@@ -73,7 +58,7 @@ export function SignUp() {
 					setRequestError(err.message);
 				} else {
 					setRequestError(
-						'Ocorreu um erro ao tentar registrar, tente novamente mais tarde'
+						'Ocorreu um erro ao tentar entrar, tente novamente mais tarde'
 					);
 				}
 			})
@@ -104,7 +89,7 @@ export function SignUp() {
 				paddingY={10}
 				backgroundColor={'shape'}
 			>
-				<form onSubmit={handleSubmit(handleRegister)}>
+				<form onSubmit={handleSubmit(handleSignIn)}>
 					<Stack
 						display={'flex'}
 						flexDirection={'column'}
@@ -115,44 +100,25 @@ export function SignUp() {
 						<Logo style={{ marginBottom: 25 }} />
 
 						<Text as={'h2'} textStyle={'title'} mb={6}>
-							Registre-se
+							Entrar
 						</Text>
 
 						<InputForm
 							control={control}
-							label={'Usuário*'}
+							label={'Usuário'}
 							name={'username'}
 							placeholder={'Usuário'}
-							helperText={
-								'Deve ter no minímo 3 caracteres, não deve conter espaço nem caracter especial'
-							}
 							icon={FiUser}
 							error={errors.username && errors.username.message}
 						/>
 						<InputForm
-							label={'Senha*'}
+							label={'Senha'}
 							control={control}
 							name={'password'}
 							placeholder={'Senha'}
-							helperText={
-								'Deve ter no minímo 8 caracteres, conter ao menos, um caracter especial, uma letra e um número'
-							}
 							icon={FiLock}
 							type={'password'}
 							error={errors.password && errors.password.message}
-						/>
-						<InputForm
-							control={control}
-							label={'Confirme sua senha*'}
-							name={'passwordConfirmation'}
-							placeholder={'Confirme sua senha'}
-							helperText={'Repita a senha digitada anteriormente'}
-							icon={FiLock}
-							type={'password'}
-							error={
-								errors.passwordConfirmation &&
-								errors.passwordConfirmation.message
-							}
 						/>
 					</Stack>
 
@@ -160,8 +126,7 @@ export function SignUp() {
 						disabled={isLoading}
 						isLoading={isLoading}
 						marginTop={8}
-						w={'100%'}
-						text={'Registrar'}
+						text={'Entrar'}
 						type={'submit'}
 					/>
 				</form>

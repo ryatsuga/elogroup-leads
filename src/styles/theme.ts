@@ -46,6 +46,10 @@ const theme = extendTheme({
 			fontFamily: 'Roboto',
 			fontWeight: 500,
 		},
+		header: {
+			fontFamily: 'Fjalla One',
+			fontWeight: 400,
+		},
 	},
 });
 

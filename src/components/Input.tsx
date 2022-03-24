@@ -21,7 +21,13 @@ export function Input({ icon: Icon, ...rest }: Props) {
 					children={<ChakraIcon as={Icon!} color='primary' />}
 				/>
 			)}
-			<ChakraInut {...rest} />
+			<ChakraInut
+				_focus={{
+					boxShadow: '0px 0px 1px 2px rgba(39,39,39,0.85)',
+				}}
+				borderRadius={0}
+				{...rest}
+			/>
 		</InputGroup>
 	);
 }
