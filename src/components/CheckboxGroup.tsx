@@ -39,8 +39,10 @@ export function CheckboxGroup({ options, setValues, ...rest }: Props) {
 				onChange={(e) => {
 					if (allChecked) {
 						setCheckedItems([]);
+						setValues([]);
 					} else {
 						setCheckedItems(options);
+						setValues(options);
 					}
 				}}
 			/>
