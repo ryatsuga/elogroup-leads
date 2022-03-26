@@ -22,10 +22,11 @@ export function CheckboxGroup({ options, setValues, ...rest }: Props) {
 		if (checkedItems.includes(op)) {
 			const updatedCheckedItems = checkedItems.filter((item) => item !== op);
 			setCheckedItems(updatedCheckedItems);
-			setValues(checkedItems);
+			setValues(updatedCheckedItems);
 		} else {
-			setCheckedItems([...checkedItems, op]);
-			setValues(checkedItems);
+			const newCheckedValues = [...checkedItems, op];
+			setCheckedItems(newCheckedValues);
+			setValues(newCheckedValues);
 		}
 	}
 

@@ -118,7 +118,7 @@ export function DragList({ data }: Props) {
 						);
 					})
 				) : (
-					<GridItem colSpan={[1, 4]} textAlign={'center'}>
+					<GridItem mt={10} colSpan={[1, 4]} textAlign={'center'}>
 						Nenhum Lead cadastrado
 					</GridItem>
 				)}

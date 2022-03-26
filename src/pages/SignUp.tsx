@@ -20,6 +20,7 @@ import { InputForm } from '../components/Forms/InputForm';
 import { Button } from '../components/Button';
 import { HttpRequestError } from '../utils/customErrors';
 import { BackButton } from '../components/BackButton';
+import { useNavigate } from 'react-router';
 
 const schema = Yup.object().shape({
 	username: Yup.string()
@@ -42,6 +43,7 @@ const schema = Yup.object().shape({
 export function SignUp() {
 	const [isLoading, setIsLoading] = useState(false);
 	const [requestError, setRequestError] = useState('');
+	const navigate = useNavigate();
 	const {
 		control,
 		handleSubmit,
@@ -68,6 +70,7 @@ export function SignUp() {
 					password: '',
 					passwordConfirmation: '',
 				});
+				navigate('/sign-in');
 			})
 			.catch((err) => {
 				console.log(err);
