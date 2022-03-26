@@ -53,7 +53,7 @@ export function Landing() {
 					textStyle={'bold'}
 					mb={10}
 				>
-					SEJA BEM VINDO
+					SEJA BEM-VINDO
 				</Text>
 				<Stack w={'100%'} gap={1}>
 					<LinkButton href={'/sign-in'} text={'Entrar'} />

@@ -94,7 +94,10 @@ export function DragList({ data }: Props) {
 
 				setElements({ ...elements, [source.droppableId]: copiedItems });
 			}
-		} catch (err) {}
+		} catch (err) {
+			console.log(err)
+			return;
+		}
 	}
 
 	return (
