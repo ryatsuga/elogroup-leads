@@ -86,7 +86,7 @@ export function SignIn() {
 			)}
 			<Box
 				width={['95%', '85%']}
-				height={['75%', '70%']}
+				height={['75%', 'auto']}
 				borderWidth={'1px'}
 				paddingX={10}
 				paddingY={10}
