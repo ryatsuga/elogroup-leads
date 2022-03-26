@@ -26,6 +26,7 @@ export function DraggableElement({ prefix, elements, isDropDisable }: Props) {
 				py={5}
 				bg={'primary_light'}
 				textTransform={'uppercase'}
+				maxW={'auto'}
 			>
 				{title.text}
 			</Container>
