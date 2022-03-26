@@ -18,7 +18,13 @@ interface AuthContextData {
 const AuthContext = React.createContext<AuthContextData>({} as AuthContextData);
 
 function AuthProvider({ children }: { children: React.ReactNode }) {
-	const [user, setUser] = React.useState<UserDTO>({} as UserDTO);
+	const [user, setUser] = React.useState<UserDTO>(() => {
+		const storagedUser = localStorage.getItem('@elogroup-leads:user');
+		if (storagedUser) {
+			return JSON.parse(storagedUser);
+		}
+		return {} as UserDTO;
+	});
 
 	const signIn = useCallback(
 		async (credentials: Credentials): Promise<void> => {

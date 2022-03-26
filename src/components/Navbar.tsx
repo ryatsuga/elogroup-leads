@@ -10,7 +10,7 @@ interface Props {
 	title: string;
 }
 
-export function Header({ title }: Props) {
+export function Navbar({ title }: Props) {
 	const [isLargerThan768] = useMediaQuery('(min-width: 768px)');
 	const { signOut } = useAuth();
 	let navigate = useNavigate();
@@ -31,17 +31,18 @@ export function Header({ title }: Props) {
 			as={'nav'}
 			bg={'primary'}
 		>
-			{isLargerThan768 ? <Logo /> : <LogoMobile width={60} />}
-
+			{!isLargerThan768 && <LogoMobile width={40} />}
 			<Text
 				as={'div'}
-				fontSize={[18, 22]}
+				fontSize={[18, 20]}
 				textStyle={'medium'}
 				color={'secondary'}
 			>
 				{title}
 			</Text>
+			{isLargerThan768 && <Logo />}
 			<IconButton
+				ml={[0, 30]}
 				onClick={handleSignOut}
 				aria-label={'SignOut'}
 				icon={<FiLogOut />}

@@ -12,17 +12,16 @@ const theme = extendTheme({
 		primary: '#272727',
 		secondary: '#F8F8F8',
 
+		primary_light: '#E3E3E3',
+
 		success: '#12A454',
-		succes_light: 'rgba(18, 164, 84, 0.5)',
+		success_light: 'rgba(18, 164, 84, 0.5)',
 
 		attention: '#E83F5B',
 		attention_light: 'rgba(232, 63, 91, 0.5)',
 
 		shape: '#FFFFFF',
 		info: '#1822DC',
-		title: '#272727',
-		text: '#2B2B2B',
-		text_details: '#AD7BT',
 	},
 	fonts: {
 		body: 'Roboto',
@@ -46,7 +45,7 @@ const theme = extendTheme({
 			fontFamily: 'Roboto',
 			fontWeight: 500,
 		},
-		header: {
+		title2: {
 			fontFamily: 'Fjalla One',
 			fontWeight: 400,
 		},

@@ -1,35 +1,36 @@
 import React from 'react';
 import { ButtonProps, Button as ChakraButton } from '@chakra-ui/react';
+import { useNavigate } from 'react-router';
+import { CgArrowLongLeft } from 'react-icons/cg';
 
 interface Props extends ButtonProps {
-	text: string;
+	to: string;
 }
 
-export function Button({ text, ...rest }: Props) {
+export function BackButton({ to, ...rest }: Props) {
+	const navigate = useNavigate();
+
 	return (
 		<ChakraButton
 			transition='all 0.2s cubic-bezier(.08,.52,.52,1)'
-			w={'100%'}
-			border='2px'
-			px='8px'
-			fontSize='14px'
+			fontSize={40}
 			fontWeight='semibold'
-			bg='shape'
-			borderColor='primary'
+			bg='transparent'
 			color='primary'
-			_hover={{ bg: 'primary', color: 'shape' }}
+			p={0}
+			ml={-2}
+			_hover={{ opacity: 0.8 }}
 			_active={{
-				bg: 'primary',
 				transform: 'scale(0.98)',
 			}}
 			_focus={{
-				boxShadow: '0px 0px 1px 2px rgba(39,39,39,0.85)',
+				boxShadow: 'none',
 			}}
+			onClick={() => navigate(to)}
 			borderRadius={0}
 			cursor={'pointer'}
+			rightIcon={<CgArrowLongLeft />}
 			{...rest}
-		>
-			{text}
-		</ChakraButton>
+		/>
 	);
 }

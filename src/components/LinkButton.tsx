@@ -1,5 +1,5 @@
-import { LinkProps, Link as ChakraLink } from '@chakra-ui/react';
 import React from 'react';
+import { LinkProps, Link as ChakraLink } from '@chakra-ui/react';
 
 interface Props extends LinkProps {
 	text: string;

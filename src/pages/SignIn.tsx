@@ -1,24 +1,24 @@
+import React, { useState } from 'react';
 import {
 	Alert,
 	AlertIcon,
 	Box,
 	Container,
+	Flex,
 	Stack,
 	Text,
 } from '@chakra-ui/react';
-import React, { useState } from 'react';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FiUser, FiLock } from 'react-icons/fi';
 import { ReactComponent as Logo } from '../assets/elogroup-logo.svg';
 import { useForm } from 'react-hook-form';
-import { v4 as uuidv4 } from 'uuid';
 import { UserDTO } from '../dtos/UserDTO';
-import apiFake from '../services/apiFake';
 import { InputForm } from '../components/Forms/InputForm';
 import { Button } from '../components/Button';
 import { HttpRequestError } from '../utils/customErrors';
 import { useAuth } from '../hooks/auth';
+import { BackButton } from '../components/BackButton';
 
 const schema = Yup.object().shape({
 	username: Yup.string().required('Informe seu nome de usuário'),
@@ -75,6 +75,9 @@ export function SignIn() {
 			alignItems={'center'}
 			justifyContent={'center'}
 		>
+			<Flex top={[4, 8]} left={[4, 20, 40]} position={'absolute'}>
+				<BackButton to={'/'} />
+			</Flex>
 			{requestError && (
 				<Alert status='error' mb={6}>
 					<AlertIcon />

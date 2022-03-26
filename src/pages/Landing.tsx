@@ -22,7 +22,7 @@ export function Landing() {
 					as={'h1'}
 					color={'secondary'}
 					fontSize={'30px'}
-					textStyle={'header'}
+					textStyle={'title2'}
 					mt={10}
 				>
 					PLATAFORMA DE
@@ -50,7 +50,7 @@ export function Landing() {
 					as={'h1'}
 					color={'primary'}
 					fontSize={'30px'}
-					textStyle={'header'}
+					textStyle={'bold'}
 					mb={10}
 				>
 					SEJA BEM VINDO

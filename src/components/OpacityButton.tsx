@@ -5,19 +5,17 @@ interface Props extends ButtonProps {
 	text: string;
 }
 
-export function Button({ text, ...rest }: Props) {
+export function OpacityButton({ text, ...rest }: Props) {
 	return (
 		<ChakraButton
 			transition='all 0.2s cubic-bezier(.08,.52,.52,1)'
 			w={'100%'}
-			border='2px'
 			px='8px'
 			fontSize='14px'
 			fontWeight='semibold'
-			bg='shape'
-			borderColor='primary'
-			color='primary'
-			_hover={{ bg: 'primary', color: 'shape' }}
+			bg='primary'
+			color='secondary'
+			_hover={{ opacity: 0.8 }}
 			_active={{
 				bg: 'primary',
 				transform: 'scale(0.98)',

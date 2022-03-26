@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactInputMask from 'react-input-mask';
 import {
 	Icon as ChakraIcon,
 	InputGroup,
@@ -10,9 +11,10 @@ import { IconType } from 'react-icons/lib';
 
 interface Props extends InputProps {
 	icon?: IconType;
+	mask?: string;
 }
 
-export function Input({ icon: Icon, ...rest }: Props) {
+export function InputMask({ icon: Icon, mask, ...rest }: Props) {
 	return (
 		<InputGroup>
 			{Icon && (
@@ -26,6 +28,8 @@ export function Input({ icon: Icon, ...rest }: Props) {
 					boxShadow: '0px 0px 1px 2px rgba(39,39,39,0.85)',
 				}}
 				borderRadius={0}
+				as={ReactInputMask}
+				mask={mask}
 				bg={'shape'}
 				{...rest}
 			/>

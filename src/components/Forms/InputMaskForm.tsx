@@ -8,7 +8,7 @@ import {
 } from '@chakra-ui/react';
 import { Control, Controller } from 'react-hook-form';
 import { IconType } from 'react-icons/lib';
-import { Input } from '../Input';
+import { InputMask } from '../InputMask';
 
 interface Props extends InputProps {
 	control: Control;
@@ -17,15 +17,17 @@ interface Props extends InputProps {
 	icon?: IconType;
 	error?: string;
 	helperText?: string;
+	mask?: string;
 }
 
-export function InputForm({
+export function InputMaskForm({
 	control,
 	label,
 	icon: Icon,
 	error,
 	name,
 	helperText,
+	mask,
 	...rest
 }: Props) {
 	return (
@@ -35,7 +37,8 @@ export function InputForm({
 				control={control}
 				name={name}
 				render={({ field: { onChange, value } }) => (
-					<Input
+					<InputMask
+						mask={mask}
 						onChange={onChange}
 						value={value || ''}
 						icon={Icon}
