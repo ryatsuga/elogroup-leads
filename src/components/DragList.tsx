@@ -62,6 +62,7 @@ export function DragList({ data }: Props) {
 
 		if (!destination) return;
 
+		// Verify if the droppable item destiny is the same of the source
 		if (
 			destination.droppableId === source.droppableId &&
 			destination.index === source.index

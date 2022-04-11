@@ -143,7 +143,7 @@ export function SignUp() {
 							name={'password'}
 							placeholder={'Senha'}
 							helperText={
-								'Deve ter no minímo 8 caracteres, conter ao menos, um caracter especial, uma letra e um número'
+								'Deve ter no minímo 8 caracteres, conter ao menos um caracter especial, uma letra e um número'
 							}
 							icon={FiLock}
 							type={'password'}

@@ -5,12 +5,12 @@ import { LinkButton } from '../components/LinkButton';
 
 export function Landing() {
 	return (
-		<Flex flexDirection={['column', 'row']} h={'100vh'}>
+		<Flex flexDirection={['column', 'column', 'row']} h={'100vh'}>
 			<Box
 				display={'flex'}
 				flexDir={'column'}
-				w={['100vw', '60%']}
-				h={['45%', '100vh']}
+				w={['100vw', '100vw', '60%']}
+				h={['45%', '45%', '100vh']}
 				justifyContent={'center'}
 				alignItems={'center'}
 				bg={'primary'}
@@ -39,8 +39,8 @@ export function Landing() {
 			<Box
 				display={'flex'}
 				flexDir={'column'}
-				w={['100vw', '40%']}
-				h={['55%', '100vh']}
+				w={['100vw', '100vw', '40%']}
+				h={['55%', '55%', '100vh']}
 				justifyContent={'center'}
 				alignItems={'center'}
 				px={5}
