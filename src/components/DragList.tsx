@@ -1,5 +1,5 @@
-import React, { useMemo, useState } from 'react';
-import { Box, Grid, GridItem } from '@chakra-ui/react';
+import React, { useState } from 'react';
+import { Grid, GridItem } from '@chakra-ui/react';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { DraggableElement } from './DraggableElement';
 
@@ -45,18 +45,19 @@ export function DragList({ data }: Props) {
 
 	function onDragEnd(result: any) {
 		const { destination, source, draggableId } = result;
-
+		// Verify if destination is more than one house forward home index
 		const forwardAllowedIndex =
 			lists.indexOf(destination.droppableId) - homeIndex! > 1;
 		if (forwardAllowedIndex) {
 			return;
 		}
+		// Verify if destination is backward home index
 		const backwardAllowedIndex =
 			homeIndex! > lists.indexOf(destination.droppableId);
 		if (backwardAllowedIndex) {
 			return;
 		}
-
+		// Reset home index
 		setHomeIndex(null);
 
 		if (!destination) return;
@@ -95,7 +96,7 @@ export function DragList({ data }: Props) {
 				setElements({ ...elements, [source.droppableId]: copiedItems });
 			}
 		} catch (err) {
-			console.log(err)
+			console.log(err);
 			return;
 		}
 	}
