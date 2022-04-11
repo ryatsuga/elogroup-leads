@@ -69,6 +69,18 @@ export function DragList({ data }: Props) {
 		)
 			return;
 
+		// Allow to drag and drop item in same list
+		if (destination.droppableId === source.droppableId) {
+			const list = elements[source.droppableId];
+			const copiedItems = list;
+
+			const [removed] = copiedItems.splice(source.index, 1);
+			copiedItems.splice(destination.index, 0, removed);
+
+			setElements({ ...elements, [source.droppableId]: copiedItems });
+			return;
+		}
+
 		try {
 			const [leadToUpdate] = elements[source.droppableId].filter(
 				(item) => item.id === draggableId
